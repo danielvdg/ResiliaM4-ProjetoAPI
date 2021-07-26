@@ -1,0 +1,21 @@
+{
+  "name": "alunoapimodulo4",
+  "version": "1.0.0",
+  "description": "Restful API de uma academia com a entidade \"Aluno(a)\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon ./src/server.js"
+  },
+  "author": "Gustavo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.4"
+  }
+}
