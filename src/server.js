@@ -1,5 +1,4 @@
-const express = require('express');
-const app = express();
+const app = require('./app')
 const port = 40001;
 
 app.listen(port, () =>
