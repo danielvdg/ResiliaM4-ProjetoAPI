@@ -49,7 +49,7 @@ module.exports = (app,db) =>
             {
                 let result = await alunoDB.getAluno(id)
                 if(result) 
-                    res.json(result)
+                    res.json({result:result})
                 else
                     throw new Error("Nenhum usuario encontrado");
             }
