@@ -5,6 +5,18 @@ module.exports = class AlunoDAO
         this.db = db;
     }
 
+    postAluno(newAluno)
+    {
+        return new Promise ((resolve,reject) =>
+        {
+            this.db.run("INSERT INTO ALUNOS (nome,cpf,endereco,bairro,telefone,email,idade,plano) VALUES (?,?,?,?,?,?,?,?) ",Object.values(newAluno),(error,rows) => 
+            {
+                if(error) reject(error)
+                else resolve(rows)
+            })
+        })    
+    }
+
     getAllAlunos()
     {
         return new Promise((resolve,reject) =>
@@ -17,11 +29,11 @@ module.exports = class AlunoDAO
         })
     }
 
-    getAluno(id)
+    getAluno(idAluno)
     {
         return new Promise((resolve,reject) => 
         {
-            this.db.get("SELECT * FROM ALUNOS WHERE id=?",id,(error,rows)=>
+            this.db.get("SELECT * FROM ALUNOS WHERE id=?",idAluno,(error,rows)=>
             {
                 if(error) reject(error);
                 else resolve(rows);
@@ -29,15 +41,31 @@ module.exports = class AlunoDAO
         })
     }
 
-    postAluno(newAluno)
+    deleteAluno(idAluno)
     {
-        return new Promise ((resolve,reject) =>
+        return new Promise((resolve,reject) =>
         {
-            this.db.get("INSERT INTO ALUNOS (nome,cpf,endereco,bairro,telefone,email,idade,plano) VALUES (?,?,?,?,?,?,?,?) ",Object.values(newAluno),(error,rows) => 
+            this.db.run("DELETE FROM ALUNOS WHERE id = ?",idAluno,(error,rows) =>
             {
-                if(error) reject(error)
-                else resolve(rows)
+                if(error) reject(error);
+                else resolve(rows);
             })
-        })    
+        })
+    }
+
+    updateAluno(id,nome,cpf,endereco,bairro,telefone,email,idade,plano)
+    {
+        const arrUpdateAluno = [];
+        arrUpdateAluno.push(nome,cpf,endereco,bairro,telefone,email,idade,plano,id)
+        let sql = "UPDATE ALUNOS SET nome=?,cpf=?,endereco=?,bairro=?,telefone=?,email=?,idade=?,plano=? WHERE id=?";
+
+        return new Promise((resolve,reject) =>
+        {
+            this.db.run(sql,arrUpdateAluno,(error,rows) =>
+            {
+                if(error) reject(error);
+                else resolve(rows);
+            })
+        })
     }
 }

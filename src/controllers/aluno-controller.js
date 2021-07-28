@@ -10,13 +10,15 @@ module.exports = (app,db) =>
         const {nome,cpf,endereco,bairro,telefone,email,idade,plano} = req.body
         let newAluno = new Aluno(nome,cpf,endereco,bairro,telefone,email,idade,plano)
 
-        try {
+        try 
+        {
             await alunoDB.postAluno(newAluno)
             res.status(201).json({
                 message:"Aluno inserido com sucesso",
                 error:false
             })
-        } catch (error)
+        } 
+        catch (error)
         {
             res.status(500).json({
                 message:"Erro ao inserir aluno",
@@ -27,12 +29,10 @@ module.exports = (app,db) =>
 
     app.get('/aluno', async (req,res) =>
     {
-        try{
+        try
+        {
             let result = await alunoDB.getAllAlunos()
-            
-            res.json({
-                result:result
-            });
+            res.json({result:result});
         }
         catch(error)
         {
@@ -43,7 +43,8 @@ module.exports = (app,db) =>
     app.get('/aluno/:id', async (req,res) =>
     {
         const { id } = req.params;
-        try {
+        try
+        {
             if(parseInt(id))
             {
                 let result = await alunoDB.getAluno(id)
@@ -53,11 +54,48 @@ module.exports = (app,db) =>
                     throw new Error("Nenhum usuario encontrado");
             }
             else
+            {
                 throw new Error("É necessário um ID tipo Inteiro, nenhumo outro tipo aceito");
-
-        } catch (error) 
+            }
+        } 
+        catch (error) 
         {
             res.status(500).json({error:error.message})    
+        }
+    })
+
+    app.put('/aluno/:id', async (req,res) =>
+    {
+        const {nome,cpf,endereco,bairro,telefone,email,idade,plano} = req.body;
+        const { id } = req.params;
+        try 
+        {
+            await alunoDB.updateAluno(id,nome,cpf,endereco,bairro,telefone,email,idade,plano)
+            res.status(200).json({
+                message:"Aluno atualizado!",
+                error:false
+            })
+        } 
+        catch (error) 
+        {
+            res.status(500).json({error:error.message})     
+        }
+    })
+
+    app.delete('/aluno/:id', async (req,res) =>
+    {
+        const { id } = req.params;
+        try 
+        {
+            await alunoDB.deleteAluno(id)
+            res.status(200).json({
+                message:"Aluno deletado!",
+                error:false
+            })    
+        }
+        catch (error)
+        {
+            res.status(500).json({error:error.message}) 
         }
     })
 };
