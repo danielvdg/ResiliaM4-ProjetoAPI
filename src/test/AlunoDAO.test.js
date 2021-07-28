@@ -17,6 +17,13 @@ describe("Testando DAO", () =>
         let result = await alunoDB.getAllAlunos();
         expect(Array.isArray(result)).toBeTruthy
     })
+
+    it('READ SPECIFIC ID', async () =>
+    {
+        const alunoDB = new AlunoDAO(db);
+        let result = await alunoDB.getAluno(1);
+        expect(Array.isArray(result)).toBeTruthy
+    })
     
     it('DELETE',async () =>
     {
