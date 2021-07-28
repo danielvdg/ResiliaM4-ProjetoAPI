@@ -20,8 +20,11 @@ const ALUNOS_SCHEMA = `
 const ADD_ALUNOS_DATA = `
     INSERT INTO Alunos(id,nome,cpf,endereco,bairro,telefone,email,idade,plano)
     VALUES
-    (1, 'German Cano',12345678912, 'Rua Batatinha','Barra da Tijuca', '21999999999', 'germancano@vasco.com', 33, 1),
-    (2,'Marta Vieira da Silva',98765432198,'Rua Maria João','Leblon','21988888888','martavascaina@vasco.com',35,3)
+    (1,'German Cano',12345678912, 'Rua Batatinha','Barra da Tijuca', '21999999999', 'germancano@vasco.com', 33, 1),
+    (2,'Marta Vieira da Silva',98765432198,'Rua Maria João','Leblon','21988888888','martavascaina@vasco.com',35,1),
+    (3,'Edson Gomes Cardoso Santos',32132132112,'Rua João Maria','Olaria','21977777777','jacare@eotchan.com',49,3),
+    (4,'Oscar Daniel Bezerra Schmidt',45645645678,'Rua Voluntários da Pátria','Botafogo','21966666666','oscarschmidt@gmail.com',63,2),
+    (5,'Maria da Graça Xuxa Meneghel',43243243210,'Rua São Clemente','Botafogo','21955555555','xuxa@record.com',58,3)
     `;
 
 function criaTabelaAlunos()
