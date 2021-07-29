@@ -32,7 +32,7 @@ describe("Testando rotas",()=>
     it('GET SPECIFIC ALUNO WITH ID = 1', async () =>
     {
         const res = await request(app)
-        .get('/aluno/1')
+        .get('/aluno/id/1')
         expect(res.statusCode).toEqual(200)
         expect(res.body).toHaveProperty('result')
         expect(res.body.result.id).toEqual(1)
