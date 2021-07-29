@@ -17,7 +17,7 @@ module.exports = class Aluno
             this.telefone = telefone
         else throw new Error('Telefone inválido. O telefone precisa conter 11 dígitos, sem pontuação')
 
-        if(email.indefOf('@') == -1)
+        if(email.indexOf('@') == -1)
             throw new Error('Email inválido')
         else
             this.email = email
