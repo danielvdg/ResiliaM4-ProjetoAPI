@@ -17,13 +17,16 @@ module.exports = class Aluno
             this.telefone = telefone
         else throw new Error('Telefone inválido. O telefone precisa conter 11 dígitos, sem pontuação')
 
-        this.email = email;
-
+        if(email.indefOf('@') == -1)
+            throw new Error('Email inválido')
+        else
+            this.email = email
+            
         if(typeof idade == 'number' && idade > 0)
             this.idade = idade
         else throw new Error('Idade inválida')
 
-
+        
         this.plano = plano;
     }
 }
