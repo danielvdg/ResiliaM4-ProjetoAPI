@@ -40,7 +40,7 @@ module.exports = (app,db) =>
         }
     });
 
-    app.get('/aluno/:id', async (req,res) =>
+    app.get('/aluno/id/:id', async (req,res) =>
     {
         const { id } = req.params;
         try
@@ -64,7 +64,7 @@ module.exports = (app,db) =>
         }
     })
 
-    app.put('/aluno/:id', async (req,res) =>
+    app.put('/aluno/id/:id', async (req,res) =>
     {
         const {nome,cpf,endereco,bairro,telefone,email,idade,plano} = req.body;
         const { id } = req.params;
@@ -82,7 +82,7 @@ module.exports = (app,db) =>
         }
     })
 
-    app.delete('/aluno/:id', async (req,res) =>
+    app.delete('/aluno/id/:id', async (req,res) =>
     {
         const { id } = req.params;
         try 
