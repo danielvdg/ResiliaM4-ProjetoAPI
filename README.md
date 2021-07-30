@@ -53,16 +53,13 @@ npm run start
 
 [Tutorial Insomnia em Inglês](https://www.youtube.com/watch?v=H16GUC9Svyk)
 
-Criar uma request:
-
+Criar uma request:<br>
 ![](https://i.ibb.co/M8rzz0v/insomnia1.png)
 
-Escolher o método que quiser:
-
+Escolher o método que quiser:<br>
 ![](https://i.ibb.co/sq887fn/insomnia2.png)
 
-Enviar dados via JSON:
-
+Enviar dados via JSON:<br>
 ![](https://i.ibb.co/hCpnMT5/insomnia3.png)
 
 #### MÉTODO GET
